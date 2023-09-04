@@ -19,14 +19,14 @@
     <meta property="og:type" content="website">
 <meta property="og:title" content="友链">
 <meta property="og:url" content="https://zhy-fang.github.io/links/index.html">
-<meta property="og:site_name" content="废话收集站">
+<meta property="og:site_name" content="欢迎来到我的空间">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="FangZhy">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>友链 - 废话收集站</title>
+  <title>友链 - 欢迎来到我的空间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -290,6 +290,28 @@
   
     <article id="comments" lazyload>
       
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"Eoh77H6EQAS37uxyRy06alzu-gzGzoHsz","appKey":"XOCdmA92n9HbEHVPx9oCL011","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
     </article>
   
