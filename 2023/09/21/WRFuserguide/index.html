@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="FangZhy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1,2章主要是基础介绍，从第三章开始看。 chapter 3 WPS（WRF预处理系统，用于实时数据模拟）1）定义模拟域 2）将陆地数据（如地形、土壤）差值到模拟域 3）将气象模型从另一个模型进行解取和差值到该区域 主要对geogrid、ungrib和metgrid三个exe进行介绍。 geogrid 定义模拟域，将地面数据插值到模拟网格中，模拟域在namelist.wps上定义新的域或额外的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WRFuserguide">
+<meta property="og:url" content="https://zhy-fang.github.io/2023/09/21/WRFuserguide/index.html">
+<meta property="og:site_name" content="欢迎来到我的空间">
+<meta property="og:description" content="1,2章主要是基础介绍，从第三章开始看。 chapter 3 WPS（WRF预处理系统，用于实时数据模拟）1）定义模拟域 2）将陆地数据（如地形、土壤）差值到模拟域 3）将气象模型从另一个模型进行解取和差值到该区域 主要对geogrid、ungrib和metgrid三个exe进行介绍。 geogrid 定义模拟域，将地面数据插值到模拟网格中，模拟域在namelist.wps上定义新的域或额外的数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhy-fang.github.io/2023/09/21/WRFuserguide/image-1.png">
+<meta property="og:image" content="https://zhy-fang.github.io/2023/09/21/WRFuserguide/image-2.png">
+<meta property="og:image" content="https://zhy-fang.github.io/2023/09/21/WRFuserguide/image-3.png">
+<meta property="og:image" content="https://zhy-fang.github.io/2023/09/21/WRFuserguide/image-4.png">
+<meta property="og:image" content="https://zhy-fang.github.io/2023/09/21/WRFuserguide/image-5.png">
+<meta property="article:published_time" content="2023-09-21T01:25:18.000Z">
+<meta property="article:modified_time" content="2023-11-11T07:36:06.814Z">
+<meta property="article:author" content="FangZhy">
+<meta property="article:tag" content="WRF">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhy-fang.github.io/2023/09/21/WRFuserguide/image-1.png">
+  
+  
+  
+  <title>WRFuserguide - 欢迎来到我的空间</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhy-fang.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangZhy&#39;blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="WRFuserguide"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-21 09:25" pubdate>
+          2023年9月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          18k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          149 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">WRFuserguide</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>1,2章主要是基础介绍，从第三章开始看。</p>
+<h1 id="chapter-3-WPS（WRF预处理系统，用于实时数据模拟）"><a href="#chapter-3-WPS（WRF预处理系统，用于实时数据模拟）" class="headerlink" title="chapter 3 WPS（WRF预处理系统，用于实时数据模拟）"></a>chapter 3 WPS（WRF预处理系统，用于实时数据模拟）</h1><p>1）定义模拟域</p>
+<p>2）将陆地数据（如地形、土壤）差值到模拟域</p>
+<p>3）将气象模型从另一个模型进行解取和差值到该区域</p>
+<p>主要对geogrid、ungrib和metgrid三个exe进行介绍。</p>
+<p>geogrid 定义模拟域，将地面数据插值到模拟网格中，模拟域在namelist.wps上定义新的域或额外的数据集可以通过表格文件GEOGRID.TBL插值到模拟域，并由ncview实现可视化。</p>
+<p>ungrib 读取GRIB文件，并以中间格式写入数据GRIB文件包含时变气象场，通常来自模型如NCEP的NAM或GFS模型，可读取GRIB Edition 1。GRIB2 选项编译，可读取GRIB Edition 2</p>
+<p>由于GRIB需要比WRF更多的字符，因此ungrib使用Vtables变量表来定义GRIB文件中哪些字段写入中间格式。通用GRIB模型输入文件的Vtables随ungrib软件一起使用。<br>Vtable提供NAM 104,212 grids格式。</p>
+<p>metgrid提取中间格式气象数据水平插值到定义的模拟域中，然后插值到metgrid输出，并且必须指定时间范围。<br>每个气象场差值方式控制由METGRID提供，可以将metgrid输出写入NetCDF，用Ncview可视化。</p>
+<p>预处理3个步骤：<br>①使用geogrid定义模型粗域和嵌套域</p>
+<p>②用ungrib从GRIB中提取气象字段</p>
+<p>③使用气象网络将气象场水平插值到模型域</p>
+<p>任何嵌套和模型粗域在名称列表.wps文件的“geogrid”名称列表记录定义，此外还需设置share参数</p>
+<p>具体可看笔记。</p>
+<p>链接</p>
+<blockquote>
+<p>ln -s ungrib/Variable_Tables/Vtable.GFS Vtable </p>
+</blockquote>
+<p>具体看参考书，基本与参考书相同。</p>
+<h1 id="chapter-4-WRF-初始化"><a href="#chapter-4-WRF-初始化" class="headerlink" title="chapter 4 WRF 初始化"></a>chapter 4 WRF 初始化</h1><p>WRF有两大类模拟：ideal 和 real<br>ideal不需要初始文件，有现有的1-D或2-D模型，并假设简化的分析地形。</p>
+<p>real是实际数据，需要WPS软件包的预处理，该预处理可以提供网格分辨率的每个大气和静态场的保真度。</p>
+<p>real.exe和ideal.exe不能一起使用，都是WRF模型运行处理之前的程序。</p>
+<p>当选择要研究的不同案例时，必须重新编译代码以为模型选择正确的初始化。<br>如果用户发出命令。/compile em_real，则会构建初始化程序。<br>如果用大涡模拟，则运行./compile em_les。对于这两个初始化程序，WRF预测模型是相同的。在每个初始化模块中，都进行相同类型的活动。</p>
+<p>步骤：</p>
+<p>1）从WPS中读取气象和静态数据</p>
+<p>2）准备模型中使用的土壤场(通常，垂直插值到指定地表方案所需的水平)</p>
+<p>3）核实土壤类别、土地用途、陆地掩膜、土壤温度、海面温度是否一致</p>
+<p>4）处理多个输入时间段以生成横向边界条件</p>
+<p>5）三维边界数据(u, v，位温，蒸汽混合比，总位势)与总柱压耦合</p>
+<p>初始化ideal步骤略。</p>
+<p>Real Data case案例</p>
+<p>实数WRF用例是指将数据输入到WRF预处理系统(WPS)提供的“real.exe”程序中的WRF用例。来自WPS的数据最初是由以前运行的外部分析或预测模型生成的。输入一般为GRIB数据。</p>
+<p>惯例是使用”met”来表示从WPS “ metgrid.exe “程序输出并输入到” real.exe “程序的数据。d01表示引用域，粗域。</p>
+<p>WPS包提供准备在WRF系统中由“real.exe”程序使用的数据。</p>
+<p>1）使用netCDF文件在WPS和real.exe中进行交换</p>
+<p>2）数据已经被水平插值到每个变量的正确网格点，风也被正确地旋转到WRF模型地图投影上。</p>
+<p>3） 3-D meteorological data required from the WPS: pressure, u, v, temperature, relative humidity, geopotential height（需要温度，水平风速，垂直风速，温度，相对湿度，位势高度 6个变量）</p>
+<p>4） Optional 3-D hydrometeor data may be provided to the real program at run-time, but these fields will not be used in the coarse-grid lateral boundary file. （可选）</p>
+<p>5）来自WPS的三维土壤数据:土壤温度，土壤湿度，土壤液体(可选，取决于WRF模型中的物理选择)</p>
+<p>6）2D meteorological data from the WPS: sea level pressure, surface pressure, surface u and v, surface temperature, surface relative humidity, input elevation（来自WPS的二维气象数据:海平面压力、地表压力、地表u和v、地表温度、地表相对湿度、输入高程，二维和三维输入变量类似）。</p>
+<p>7）2-D meteorological optional data from WPS: sea surface temperature, physical snow depth, water equivalent snow depth（WPS的二维气象可选数据:海面温度、物理雪深、水等效雪深）</p>
+<p>8）2D static data for the physical surface: terrain elevation, land use categories, soil texture categories, temporally-interpolated monthly data, land sea mask, elevation of the input model’s topography（物理表面的二维静态数据:地形高程、土地利用类别、土壤质地类别、临时插值的月度数据、陆地海洋掩模、输入模型地形的高程，这个在geo里面都有）</p>
+<p>9）2D static data for the projection: map factors, Coriolis, projection rotation, computational latitude（需要选择）</p>
+<p>10）constants: domain size, grid distances, date</p>
+<p>11）The WPS data may either be isobaric or some more-generalized vertical coordinate, where each column is monotonic in pressure（WPS数据可以是等压的，也可以是更广义的垂直坐标，其中每一列的压力都是单调的）</p>
+<p>12）所有三维气象数据(风、温度、高度、湿度、压力)必须具有相同数量的级别，并且变量必须具有完全相同的级别。例如，温度(例如)的级别超过高度的级别是不可接受的。同样，水平风组件的额外水平是不可接受的，但湿度则不行。</p>
+<p>当运行完real.exe后，会出现 “wrfinput_d01” and “wrfbdy_d01”,这些文件将被WRF模型直接使用。</p>
+<p>输出文件wrfout_d01:2000-01-24_12:00:00应该每隔3小时包含一个12小时的预测。</p>
+<h1 id="Chapter-5-WRF-模式"><a href="#Chapter-5-WRF-模式" class="headerlink" title="Chapter 5 WRF 模式"></a>Chapter 5 WRF 模式</h1><p>WRF模型是一个完全可压缩的非流体静力模型(具有运行时流体静力选项)。The model uses the Runge-Kutta 2nd and 3rd order time integration schemes, and 2nd to 6th order advection schemes in both the horizontal and vertical. It uses a time-split small step for acoustic and gravity-wave modes.</p>
+<p>WRF模型代码包含一个初始化程序包括：real.exe、ideal.exe、wrf.exe（数值积分程序）、ndown.exe（单向嵌套程序）、tc.exe（热带风暴模拟程序），可以实现的功能包括：</p>
+<p>•    Real-data and idealized simulations（实时数据和理想模拟）</p>
+<p>•    Various lateral boundary condition options for real-data and idealized simulations（实际数据和理想模拟的各种横向边界条件选项）</p>
+<p>•    Full physics options, and various filter options（完整的物理选项，和各种过滤器选项）</p>
+<p>•    Positive-definite advection scheme（正定平流方案）</p>
+<p>•    Non-hydrostatic and hydrostatic (runtime option)（非流体静力和流体静力(运行时选项)）</p>
+<p>•    One-way and two-way nesting, and a moving nest（单向和双向筑巢，以及移动筑巢）</p>
+<p>•    Three-dimensional analysis nudging（三维分析推挤）</p>
+<p>•    Observation nudging</p>
+<p>•    Regional and global applications（区域和全球应用）</p>
+<p>•    Digital filter initialization（数字滤波器初始化）</p>
+<p>•    Vertical refinement in a child domain（子域中的垂直细化）</p>
+<p>a.Idealized case</p>
+<p>For any 2D test case (labeled in the case names), serial or OpenMP (smpar) compile options must be used. You must only choose the ‘0=no nesting’ option when you configure. </p>
+<p>b.Real-data case</p>
+<p>For a real-data case, type<br>./compile em_real &gt;&amp; compile.log &amp;</p>
+<p>When the compile is successful, it will create three executables in the main/directory: ndown.exe, real.exe and wrf.exe.</p>
+<p>real.exe: for WRF initialization of real data cases</p>
+<p>ndown.exe : for one-way nesting</p>
+<p>wrf.exe : WRF model integration</p>
+<p>Running WRF</p>
+<p>步骤略。</p>
+<p>最后生成wrfout_d01_+时间</p>
+<p>根据名称列表选项，您可能有其他wrfout文件(拆分输出文件的频率由名称列表选项frames_per_outfile决定)。如果名称列表中有一个重启频率(restart_interval)，也可以创建重启文件。输入文件）在总集成时间内设置。重新启动文件应该具有以下命名约定</p>
+<p>wrfrst_d<domain>_<date></date></domain></p>
+<p>重启运行的话重启的文件是非常大的。因此建议从头开始。<br>重启需要对程序进行重新设置。</p>
+<p>Two-way Nested Runs（双向嵌套）<br>双向嵌套将不同域同时运行，并相互通信。粗边界为nest提供边界值，nest将计算结果反馈到较粗的域。</p>
+<p>双向嵌套运行是这样一种运行，在这种运行中，不同网格分辨率的多个域同时运行并相互通信:较粗的域为巢提供边界值，而巢将其计算反馈给较粗的域。该模型可以处理同一嵌套层上的多个域(无重叠嵌套)和多个嵌套层(伸缩)。</p>
+<p>使用ndown的单向嵌套运行（一般会很少用到吧，算两次不更好）</p>
+<p>WRF支持两个单独的单向嵌套选项。在本节中，单向嵌套被定义为更精细网格分辨率的运行，在更粗糙网格分辨率运行之后的后续运行，其中ndown程序在两次模拟之间运行。这种精细网格运行的初始和横向边界条件是从粗网格运行中获得的，输入来自更高分辨率的陆地场(如地形、土地利用等)和掩蔽的表面场(如土壤温度和湿度)。</p>
+<p>当使用单向嵌套时，粗-细网格比例仅被限制为整数（一般设置为3），建议输入小于等于5的整数。也建议从粗网格运行中频繁输出(例如每小时)，以提供更好的边界规范。不要在运行ndown时更改物理选项(可以在运行wrf时更改一些物理选项)，如果计划使用ndown，也不要从Registry中删除字段。</p>
+<p>Step 1: Make a coarse grid run.（粗网格运行）</p>
+<p>Do output history files as often as you can, and this will provide better and more frequent boundary conditions for the next model run.尽可能频繁地输出历史文件，这将为下一次模型运行提供更好、更频繁的边界条件。</p>
+<p>Step 2:  Run geogrid.exe (gives geo_em.d01 and geo_em.d02 files) and metgrid.exe for two domains (as if you are making a 2-way nested run).</p>
+<p>This will generate WPS output files for domain 1 (met_em.d01.<date>) and domain 2 (met_em.d02.<date>).  </date></date></p>
+<p>Step 3:  Run real.exe for 2 domains.</p>
+<p>The purpose of this step is to ingest higher resolution terrestrial fields and corresponding land-water masked soil fields.<br>这一步的目的是摄取更高分辨率的陆地场和相应的陆水掩蔽土壤场。</p>
+<ul>
+<li>Copy the met_em* files into the directory in which you will be running real.exe.</li>
+<li>Edit the namelist.input file, changing ‘max_dom = 2’, and making sure columns 1 and 2 are set-up for a 2 domain run, editting the correct start time and grid dimensions.</li>
+<li>Run real.exe.  This will produce a wrfinput_d01 file, a wrfinput_d02 file, and a wrfbdy_d01 file.</li>
+<li>Rename the wrfinput_d02 file to wrfndi_d02. </li>
+</ul>
+<p>Step 4: Make the final fine-grid initial and boundary condition files, by running ndown.exe通过运行ndown.exe，生成最终的细网格初始和边界条件文件</p>
+<ul>
+<li>Since V3.2, one must add io_form_auxinput2 = 2 in the &amp;time_control section of namelist.input to run ndown.exe successfully. (If one desires to refine the vertical resolution when running ndown, set vert_refine_fact = integer (new in V3.2). There are no other changes required in the namelist or in the procedure. Another way to refine vertical resolution is to use the utility program v_interp (see the chapter for ‘Utilities and Tools’ for details)).（从V3.2开始，必须在namelist的&amp;time_control部分中添加io_form_auxinput2 = 2。输入成功运行ndown.exe。）不需要在名称列表或过程中进行其他更改。另一种改进垂直分辨率的方法是使用实用程序v_interp(详细信息请参见“实用程序和工具”一章)。</li>
+<li>Change namelist variable interval_seconds to reflect the history output interval from the coarse domain model run.</li>
+<li>Do not change physics options until after running the ndown program.（ndown不需要改变其他选项）</li>
+<li>Run ndown.exe, which uses input from the coarse grid wrfout file(s), and the wrfndi_d02 file generated from Step 3 above. This will produce a wrfinput_d02 and wrfbdy_d02 file.</li>
+</ul>
+<p>The ndown program must be built to support nesting, however.  To run the program, type<br>./ndown.exe</p>
+<p>Step 5: Make the fine-grid WRF run</p>
+<ul>
+<li><p>Rename wrfinput_d02 and wrfbdy_d02 to wrfinput_d01 and wrfbdy_d01, respectively. </p>
+</li>
+<li><p>Rename (or move) the original wrfout_d01* files to something else (or another directory) so as to not overwrite them.</p>
+</li>
+<li><p>Edit namelist.input,moving all of the fine-grid domain data from column 2 to column 1 so that this run will be for the fine-grid domain only.  Make sure that the time_step is set to comply with the fine-grid domain (typically 6*DX).  It may be beneficial to save namelist.input to something else prior to this step in case you need to repeat this process in the future.  Save the newly-edited namelist as namelist.input.</p>
+</li>
+<li><p>WRF模型的物理选项可在运行之间进行修改(在运行前的WRF模型和在运行后的WRF模型，但在运行时使用与第一次运行相同的物理)，但通常地表方案选项除外，该方案根据方案具有不同的土壤深度数。用户可以利用允许初始边界和横向边界同时使用潮湿和标量数组的特性(分别为have_bcs_moist和have_bcs_scalar)。此选项仅在WRF模型运行期间使用，该模型在ndown处理之后运行。使用此选项，用户必须在预报之间保持微物理选项相同。其优点是，以前的WRF模型为所有微物理变量提供了真实的横向边界趋势，而不是简单的“零流入”或“零梯度流出”。</p>
+</li>
+<li><p>Run WRF for this grid.</p>
+</li>
+</ul>
+<p><em>Keep in mind that the output from this run will be in the form wrfout_d01</em> but it will actually be output for domain 2.  It may help to rename these to avoid future confusion.</p>
+<p>Running ndown.exe for Three or More Domains（为三个或更多域运行ndown.exe）</p>
+<p>Because of the way the code it written, it expects particular file names (specifically for d01 and d02), and therefore it is important to follow these steps precisely(由于代码的编写方式，它需要特定的文件名(特别是d01和d02)，因此精确地遵循这些步骤很重要):</p>
+<p>注意:这个例子是为了向下嵌套到第三个域(总共3个域)，并假设您已经从上一次运行中获得了wrfout_d01*文件。</p>
+<p>Step A:  Run the geogrid.exe and metgrid.exe programs for 3 domains. You should have files met_em.d01.<date>, met_em.d02.<date>, and met_em.d03.<date>.</date></date></date></p>
+<p>Step B:  Run real.exe for 3 domains.</p>
+<ul>
+<li>Copy the met_em* files into the directory in which you will be running real.exe.</li>
+<li>Edit the namelist.input file, changing ‘max_dom = 3’, and making sure columns 1, 2 and 3 are set-up for a 3 domain run, editting the correct start time and grid dimensions.</li>
+<li>Run real.exe.  This will produce a wrfinput_d01, wrfinput_d02, a wrfinput_d03 file, and a wrfbdy_d01 file.</li>
+<li>Rename the wrfinput_d02 file to wrfndi_d02. </li>
+</ul>
+<p>Step C:  Make the domain 02 grid initial and boundary condition files, by running ndown.exe (see the details in step 4 above)</p>
+<p>Step D:  Make the domain 2 WRF run (see the details in step 5 above).  You will now have new files named wrfout_d01* which will correspond to domain 02.</p>
+<p>Step E:  Make the domain 03 grid initial and boundary condition files, by running ndown.exe</p>
+<ul>
+<li>Rename the wrfinput_d03 file to wrfndi_d02 (this is the name the program expects) </li>
+<li>Make sure the namelist still has io_form_auxinput2 = 2 in the &amp;time_control section.</li>
+<li>Change namelist variable interval_seconds to reflect the history output interval from the coarse domain model run.</li>
+<li>Do not change physics options until after running the ndown program.</li>
+<li>Run ndown.exe, which uses input from the (new) coarse grid wrfout file(s), and the wrfndi_d02 file. This will produce a wrfinput_d02 and wrfbdy_d02 file (which will actually correspond to domain 03).</li>
+</ul>
+<p>Step F:  Make the fine-grid (d03) WRF run.</p>
+<ul>
+<li>Rename wrfinput_d02 and wrfbdy_d02 to wrfinput_d01 and wrfbdy_d01, respectively. </li>
+<li>Rename (or move) the wrfout_d01* files to something else (or another directory) so as to not overwrite them (recall that these files correspond to d02).</li>
+<li>Edit namelist.input, moving all of the fine-grid domain data from column 3 to column 1 so that this run will be for the fine-grid domain only.  Make sure that the time_step is set to comply with the fine-grid domain (typically 6*DX).  It may be beneficial to save namelist.input to something else prior to this step in case you need to repeat this process in the future.  Save the newly-edited namelist as namelist.input.</li>
+</ul>
+<p>After running wrf.exe, you will have new wrfout_d01* files.  These will correspond to domain 03.  If you need to add any more nests, follow the same format, keeping the naming convention the same.<br>运行wrf.exe后，您将拥有新的wrfout_d01*文件。这些将对应于域03。如果需要添加更多的嵌套，请遵循相同的格式，保持命名约定不变。</p>
+<p>下一页的图总结了使用程序ndown进行单向嵌套运行的数据流。</p>
+<p><img src="/2023/09/21/WRFuserguide/image-1.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p><img src="/2023/09/21/WRFuserguide/image-2.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>f. Moving-Nested Run</p>
+<p>在WRF中允许两种类型的移动测试。在第一个选项中，用户在名称列表中指定嵌套移动。第二种选择是基于自动涡流跟踪算法自动移动巢。这个选项被设计用来跟踪一个定义明确的热带气旋的运动。</p>
+<p>用来做移动气旋的模拟。</p>
+<p>略（以后用到再看，现在看了也记不住）</p>
+<p>g. Analysis Nudging Runs (Upper-Air and/or Surface)<br>分析轻推运行(高空和/或地面)</p>
+<p>略</p>
+<p>h. Observation Nudging Run</p>
+<p>略</p>
+<p>i. Global Run（全球尺度）</p>
+<p>略</p>
+<p>j. Using Digital Filter Initialization（使用数字滤波器初始化）</p>
+<p>k. Using the sst_update option（使用sst_update选项）</p>
+<p>WRF模式物理不能预测海面温度、植被比例、反照率或海冰。对于长时间的模拟，该模型提供了一种读取时变数据并更新这些字段的替代方法。为了使用这种方法，必须能够获得时变的海温和海冰场。</p>
+<p>Note that this option doesn’t work with sf_ocean_physics options.</p>
+<p>l. Using bucket_mm and bucket_J options</p>
+<p>这些选项用于长期模拟降雨积累和辐射预算积累项(RAINC, RAINNC, ACSWUPT, ACLWDNBC等)。对于32位精度，将小数加到非常大的数字上会随着累加项的增加而失去精度。对于几天到几周的模拟，积累通常是可以的，但是对于几个月到几年的模拟，这有截断添加的效果，特别是小的可能会被零化。</p>
+<p>当这些选项被激活时，术语的一部分存储在一个整数中，每次达到桶值时该整数加1，因此我们有两个术语—RAINNC和I_RAINNC，其中RAINNC现在只包含剩余部分。</p>
+<p>使用total = RAINNC+bucket_mm*I_RAINNC从输出中检索总数。合理的桶值可根据月累积量(如100mm)计算。总降水量等于RAINC + RAINNC，其中</p>
+<p>Total RAINNC = RAINNC+bucket_mm<em>I_RAINNC<br>Total RAINC = RAINC+bucket_mm</em>I_RAINC</p>
+<p>The radiation accumulation terms (e.g., ACSWUPT) are in Joules/m^2, so that the mean value over a simulation period is the difference divided by the time between, giving W/m^2.</p>
+<p>total = ACSWUPT+bucket_J*I_ACSWUPT</p>
+<p>m. Using Adaptive Time Stepping（使用自适应时间步进）</p>
+<p>自适应时间步进是一种在保持模型数值稳定的同时最大化模型所能使用的时间步长的方法。模型的时间步长是基于全域水平和垂直稳定性准则(称为Courant-Friedrichs-Lewy (CFL)条件)来调整的。下面的一组值通常可以很好地工作。</p>
+<p>use_adaptive_time_step = .true.<br>step_to_output_time = .true. (but nested domains may still be writing output at the desired time. Try to use adjust_output_times = .true. to make up for this.)<br>target_cfl = 1.2, 1.2, 1.2,<br>max_step_increase_pct = 5, 51, 51, (a large percentage value for the nest allows the time step for the nest to have more freedom to adjust)<br>starting_time_step = the actual value or -1 (which means 4<em>DX at start time)<br>max_time_step : use fixed values for all domains, e.g. 8</em>DX<br>min_time_step : use fixed values for all domains, e.g. 3*DX<br>adaptation_domain: which domain is driving the adaptive time step</p>
+<p>n. Stochastic parameterization schemes（随机参数化方案）</p>
+<p>随机参数化套件包括许多随机参数化方案，其中一些被广泛使用，一些是为非常特殊的应用而开发的。它可以通过在每个时间步对每个成员施加一个小的扰动来表示集成模拟中的模型不确定性。这些方案中的每一个都产生自己的随机扰动场，其特征是空间和时间的相关性，以及在命名列表record &amp;stoch中定义的总体扰动幅度(从3.6版本开始)。</p>
+<p>随机扰动产生在父域在每个时间步，默认情况下，插值到嵌套域(s)。名称列表设置决定这些扰动应用于哪些域。通过设置，例如sppt=0,1,1，扰动将仅应用于嵌套域。</p>
+<p>由于该方案使用库FFTPACK中提供的快速傅里叶变换(fft)，我们建议每个方向上的网格点数量是小素数的乘积。如果网格点的数量在至少一个方向上是一个大素数，计算成本可能会大大增加。</p>
+<p>Random perturbation field (rand_perturb=1) 随机扰动场=1<br>This option generates a 3-D Gaussian random perturbation field for user-implemented applications.The perturbation field is saved as  rand_pert in the history files (available starting with version 3.7).<br>该选项为用户实现的应用程序生成一个三维高斯随机摄动场。扰动场在历史文件中保存为rand_pert(从3.7版开始可用)。</p>
+<p>Stochastically perturbed physics tendencies (SPPT) (sppt=1)<br>采用随机模式扰动位能温度、风和湿度的累积物理趋势(微物理趋势除外)<br>Stochastic kinetic-energy backscatter scheme (SKEBS) (skebs=1)</p>
+<p>采用随机模式对势温和旋转风分量进行扰动。u、v、θ的扰动场分别保存为历史文件中的ru_tendf_stoch、rv_tendf_stoch、rt_tendf_stoch。<br>风扰动与动能后向散射率的平方根成正比，温度扰动与势能后向散射率成正比</p>
+<p>默认参数用于中纬度的天气尺度扰动。</p>
+<p>Stochastically perturbed parameter scheme (SPP) (spp=1)随机摄动参数格式</p>
+<p>采用随机模式对GF对流方案、MYNN边界层方案和RUC LSM等物理包中的参数进行扰动。</p>
+<p>Stochastic Perturbations to the boundary conditions (perturb_bdy)边界条件的随机扰动(perturb_bdy)</p>
+<p>Stochastic perturbations to the boundary tendencies in WRF-CHEM (perturb_chem_bdy)</p>
+<p>The random pattern created by the option rand_perturb=1 (see above) is used to perturb the chemistry boundary tendencies in WRF-CHEM. For this application, WRF-Chem should be compiled at the time of the WRF compilation. </p>
+<p>o. Run-Time IO</p>
+<p>用户让WRF模型知道对IO进行运行时修改的信息位于何处。这是一个文本文件(my_file_d01.txt)，在名称列表中定义，每个域对应一个。</p>
+<p>p. Output Diagnostics</p>
+<ol>
+<li>Time series output. To activate the option, a file called “tslist” must be present in the WRF run directory. </li>
+<li>Pressure level output. This is activated by adding a namelist record &amp;diags, and set p_lev_diags = 1.</li>
+<li>nwp_diagnostics = 1 in &amp;time_control.Convective storm diagnostics.（对流层风暴诊断）</li>
+<li>output_diagnostics = 1 in &amp;time_control. Climate diagnostics. （气候诊断）</li>
+<li>do_avgflx_em = 1 in &amp;dyanmics.  This option outputs history-time averaged, column-pressure coupled U, V and W for downstream transport models.</li>
+<li>afwa_diag_opt = 1 in &amp;afwa. （天气控制选项）</li>
+</ol>
+<p>afwa_ptype_opt = 1     precipitation type<br>afwa_severe_opt = 1     severe weather diagnostics<br>afwa_vil_opt = 1        vertically integrated liquid<br>afwa_radar_opt = 1    radar<br>afwa_icing_opt = 1    icing<br>afwa_vis_opt = 1        visibility<br>afwa_cloud_opt = 1    cloud<br>afwa_therm_opt = 1    thermal index<br>afwa_turb_opt = 1    turbulence<br>afwa_buoy_opt = 1    buoyancy</p>
+<ol start="7">
+<li>Others in &amp;physics</li>
+</ol>
+<p>do_radar_ref = 1: compute radar reflectivity using microphysics-specific parameters in the model. Works for mp_physics = 2,4,6,7,8,10,14,16.使用模型中特定于微物理的参数计算雷达反射率。</p>
+<p>prec_acc_dt = 60: Time interval for outputing precipitation variables (rain from cumulus and microphysics schemes, and snow from microphysics scheme) (unit in minutes).输出降水变量的时间间隔</p>
+<p>q. WRF-Hydro<br>r. Using IO Quilting<br>s. Using Physics Suites<br>t. Hybrid Vertical Coordinate（混合垂直坐标）</p>
+<p>Examples of namelists for various applications</p>
+<p>这里提供了一些物理选项集(加上模型顶部和垂直水平的数量)供参考。它们可以为在应用程序中测试模型提供一个很好的起点。还要注意，其他因素也会影响结果</p>
+<p>不同的环境对应不同的参数设置。</p>
+<p>Check Output</p>
+<p>Once a model run is completed, it is good practice to check a couple of things quickly. 一旦模型运行完成，快速检查几件事情是一个很好的做法。</p>
+<p>The namelist options are written to a separate file: namelist.output.<br>名称列表选项被写入一个单独的文件:namelist.output。</p>
+<p>Take a look at either the rsl.out.0000 file or other standard-out files. This file logs the times taken to compute for one model time step, and to write one history and restart output file<br>这个文件记录了计算一个模型时间步所花费的时间，以及写入一个历史和重新启动输出文件所花费的时间</p>
+<p>Trouble Shooting（故障排除）</p>
+<p>如果模型很快终止，很可能是计算机内存不够大，无法运行特定的配置，或者输入数据有一些严重的问题。对于第一个潜在的问题，尝试键入’ unlimit ‘或’ ulimit -s unlimited ‘来查看是否可以获得更多的内存和/或堆栈大小。</p>
+<p>Physics and Dynamics Options</p>
+<p>WRF提供多种物理选项，可以以任何方式组合。这些选择通常包括从简单和有效到复杂和计算成本更高，从新开发的方案到久经考验的方案(如当前操作模型中的方案)。每个主要的WRF版本都有不同的选择，但这里我们将概述WRF版本3中可用的选项。</p>
+<ol>
+<li>Microphysics (mp_physics)</li>
+</ol>
+<p>a. Kessler方案:理想云模拟研究中常用的暖雨(即无冰)方案(mp_physics = 1)。</p>
+<p>b. Lin et al. scheme:一种复杂的方案，包含冰、雪和霰过程，适合于真实数据的高分辨率模拟(2)。</p>
+<p>c. WRF单矩3类方案:一种简单、高效的方案，包含适合中尺度网格尺寸的冰雪过程(3)。</p>
+<p>d. WRF单矩5级方案:(c)的稍微复杂的版本，允许混合相过程和过冷水(4)。</p>
+<p>e. Eta微物理:NCEP模型中的操作微物理。诊断混合相过程的一种简单有效的方案。对于精细分辨率(&lt;5km)使用选项(5)，对于粗分辨率使用选项(95)。</p>
+<p>f. WRF单矩6类方案:适合高分辨率模拟的冰、雪、霰过程方案(6)。</p>
+<p>g. 戈达德微物理方案。适用于高分辨率模拟的冰、雪和霰过程方案(7)。3.0新版功能。</p>
+<p>h. New Thompson等人的方案:一个适合高分辨率模拟的冰、雪和霰过程的新方案(8)。这增加了雨数浓度，并更新了3.0版本的方案。3.1新版功能。</p>
+<p>i. Milbrandt-Yau双矩7类方案(9)。该方案包括冰雹和霰的单独 类别，有双矩云、雨、冰、雪、霰和冰雹。3.2新版功能。(注意:在V3.6和V3.6.1中不要使用此方案。)</p>
+<p>j. Morrison双矩格式(10)。用于云分辨模拟的双时刻冰、雪、雨和霰。3.0新版功能。</p>
+<p>……</p>
+<p>（太多方案了）</p>
+<p>2.1 Longwave Radiation (ra_lw_physics)（长波辐射）</p>
+<p>2.2 Shortwave Radiation (ra_sw_physics)（短波辐射）</p>
+<p>2.3 Input to radiation options（辐射选项输入）</p>
+<p>2.4 Cloud fraction option（云分数选项）</p>
+<p>3.1 Surface Layer (sf_sfclay_physics)（地面层）</p>
+<p>3.2 Land Surface (sf_surface_physics)（地表）</p>
+<p>3.3 Urban Surface (sf_urban_physics – replacing old switch ucmcall)（城市地面）</p>
+<p>3.4 Lake Physics (sf_lake_physics)（湖面物理）</p>
+<p>4.Planetary Boundary layer (bl_pbl_physics)（边界层方案）</p>
+<p>5.Cumulus Parameterization (cu_physics)（积云参数化方案）</p>
+<p>6.Shallow convection option (shcu_physics)（浅对流层选项）</p>
+<p>7.Other physics options（其他的物理选项）</p>
+<p>8.Physics sensitivity options（物理灵敏度选项）</p>
+<p>a. no_mp_heating:当设置为1时，关闭微物理潜热。当使用这个选项时，cu_physics应该设置为0.</p>
+<p>b.icloud:当设置为0时，关闭短波辐射选项1,4和长波辐射选项1,4中对光学深度的云效应。注意，从V3.6开始，这个名称列表还控制了对radiation.</p>
+<p>c.使用哪个云分数方法。isfflx:当设置为0时，关闭地表的感热通量和潜热通量。此选项适用于sf_sfclay_physics = 1,5,7,11 .</p>
+<p>d.ifsnow:当设置为0时，它关闭sf_surface_physics = 1中的雪效果。</p>
+<p>Diffusion and Damping Options（扩散和阻尼选项）</p>
+<p>WRF中的扩散分为两个参数:扩散选项和K选项。扩散选项选择如何计算扩散中使用的导数，K选项选择如何计算K系数。请注意，当选择PBL选项时，垂直扩散由PBL方案完成，而不是由扩散方案完成。在版本3中，垂直扩散也与表面通量相关联。</p>
+<p>Other Dynamics Options</p>
+<p>Lateral Boundary Condition Options（横向边界条件）</p>
+<p>Summary of PBL Physics Options</p>
+<p><img src="/2023/09/21/WRFuserguide/image-3.png" srcset="/img/loading.gif" lazyload alt="Alt text"><br>详见userguide</p>
+<p>Summary of Microphysics Options（微物理方案）</p>
+<p>Summary of Cumulus Parameterization Options（积云参数化方案）</p>
+<p>Summary of Radiation Physics Options（辐射物理选项摘要）</p>
+<p>Description of Namelist Variables（变量说明，讲的还挺清楚的。）</p>
+<p>WRF Output Fields（WRF输出字段）</p>
+<p>The following is an edited output list from the netCDF command ‘ncdump -h’. Note that valid output fields will depend on the model options used. If the fields have zero values, then the fields are not computed by the model options selected.</p>
+<p>以下是netCDF命令’ncdump -h’编辑后的输出列表。注意，有效的输出字段将取决于所使用的模型选项。如果字段的值为零，则所选的模型选项不会计算字段。</p>
+<p>ncdump -h wrfout_d<domain>_<date></date></domain></p>
+<p>netcdf wrfout_d01_2000-01-24_12:00:00</p>
+<p>List of Global Attributes（全局属性表）</p>
+<p>Special WRF Output Variables（特殊的WRF输出变量）</p>
+<h1 id="Chapter-6-WRF-DA-数据同化"><a href="#Chapter-6-WRF-DA-数据同化" class="headerlink" title="Chapter 6 WRF DA (数据同化)"></a>Chapter 6 WRF DA (数据同化)</h1><p>introduction</p>
+<p>数据同化是将观测数据与NWP产品(首次猜测或背景预报)及其各自的误差统计相结合，以提供对大气(或海洋、木星等)状态的改进估计(分析)的技术。</p>
+<p>WRFDA系统的各个组成部分在下面的草图中以蓝色显示，以及它们与WRF系统其余部分的关系。</p>
+<p><img src="/2023/09/21/WRFuserguide/image-4.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p><img src="/2023/09/21/WRFuserguide/image-5.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>略。</p>
+<h1 id="Chapter-7-Objective-Analysis-OBSGRID-（客观分析）"><a href="#Chapter-7-Objective-Analysis-OBSGRID-（客观分析）" class="headerlink" title="Chapter 7: Objective Analysis (OBSGRID) （客观分析）"></a>Chapter 7: Objective Analysis (OBSGRID) （客观分析）</h1><p>introduction</p>
+<p>气象模拟中客观分析的目标是通过结合观测信息来改进中尺度网格上的气象分析</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/WRF/" class="print-no-link">#WRF</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>WRFuserguide</div>
+      <div>https://zhy-fang.github.io/2023/09/21/WRFuserguide/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>FangZhy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/26/WRF-chemuserguide/" title="WRF-chemuserguide">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WRF-chemuserguide</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/20/article2/" title="文献阅读（2）">
+                        <span class="hidden-mobile">文献阅读（2）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"Eoh77H6EQAS37uxyRy06alzu-gzGzoHsz","appKey":"XOCdmA92n9HbEHVPx9oCL011","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

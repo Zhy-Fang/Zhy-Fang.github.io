@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="FangZhy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="看5篇论文，并且进行总结。优点缺点，如何进行统计，理顺自己的思路。 《The dynamic, thermal and material structures of sea-land breeze circulation at the coastal of Ningbo, East China Sea》  海风的风向被定义为东风和东南风，而陆风的风向被定义为西南风和西风。  海风期间被定义为从海风">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLBC海陆环流文献阅读">
+<meta property="og:url" content="https://zhy-fang.github.io/2023/10/31/SLBC/index.html">
+<meta property="og:site_name" content="欢迎来到我的空间">
+<meta property="og:description" content="看5篇论文，并且进行总结。优点缺点，如何进行统计，理顺自己的思路。 《The dynamic, thermal and material structures of sea-land breeze circulation at the coastal of Ningbo, East China Sea》  海风的风向被定义为东风和东南风，而陆风的风向被定义为西南风和西风。  海风期间被定义为从海风">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-31T07:42:42.000Z">
+<meta property="article:modified_time" content="2024-01-07T01:47:31.031Z">
+<meta property="article:author" content="FangZhy">
+<meta property="article:tag" content="海陆环流">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>SLBC海陆环流文献阅读 - 欢迎来到我的空间</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zhy-fang.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>FangZhy&#39;blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SLBC海陆环流文献阅读"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-31 15:42" pubdate>
+          2023年10月31日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          110 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SLBC海陆环流文献阅读</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>看5篇论文，并且进行总结。优点缺点，如何进行统计，理顺自己的思路。</p>
+<p><strong>《The dynamic, thermal and material structures of sea-land breeze circulation at the coastal of Ningbo, East China Sea》</strong></p>
+<ol>
+<li><p>海风的风向被定义为东风和东南风，而陆风的风向被定义为西南风和西风。</p>
+</li>
+<li><p>海风期间被定义为从海风开始到下一次海风结束的时间段，期间不应存在超过两次陆风。</p>
+<p>同样，陆风期间被定义为从陆风开始到下一次陆风结束的时间段，期间不应存在超过两次海风。</p>
+</li>
+<li><p>海风期（或陆风期）的开始和结束分别对应于海风（或陆风）的开始和结束。</p>
+</li>
+</ol>
+<p>以上是根据观测站的地理位置和观测站附近海岸线的分布特点确定的。</p>
+<p>虚拟位温（Virtual Potential Temperature）是大气科学中的一个参数，用于描述空气的温度和湿度的综合影响，以更好地了解大气的稳定性和动力学特性。虚拟位温通常表示为θ_v。</p>
+<p>虚拟位温是一种扩展了干燥位温（dry potential temperature）的概念，干燥位温是指空气在没有水蒸气的情况下的温度。虚拟位温考虑了水蒸气对空气密度和稳定性的影响。它的计算涉及到湿空气的温度、气压和水蒸气混合比。</p>
+<p>它在分析大气层中的温度和湿度垂直分布，研究大气的稳定性和预测气象事件方面都具有重要价值。通过虚拟位温的计算，气象学家和气象预报员可以更好地理解大气中不同高度的空气的特性，进而改进天气预报和气候研究。</p>
+<p>湍流动能(TKE，The turbulence kinetic energy)可以从边界层动力结构的角度反映边界层的稳定性。</p>
+<p>TKE 可以用来评估边界层内湍流的强度和能量分布。 TKE 可以用来研究边界层中湍流的产生机制。湍流动能的增加通常与流体的速度梯度和不稳定性增加有关。在边界层中，风速的变化和不稳定性是湍流产生的主要驱动力。 TKE 可以用来描述边界层中湍流的传输和混合过程。湍流动能通常会随着时间和空间的变化而传输和分散，这对于混合、扩散和大气/海洋层中的物质交换非常重要。 TKE 通常用于大气和海洋模型中，以帮助模拟和预测边界层内湍流的发展和演变。这在天气预测、气候模拟和空气质量模型等应用中非常重要。</p>
+<p>During the observation period from November to May, the typical SLB transition process was observed for 18 days in winter and 22 days in spring.<br>从11月到5月，统计SLB过程为18天和22天。（可以直接从风向上看海陆环流）</p>
+<p>海风(SB)一般出现在白天，在下午最强;陆风(LB)一般出现在夜间，在清晨左右最强。</p>
+<p>图4显示了冬季和春季SLB的高度不同。海风在春季环流时，环流边界可达1.8 km，最大U分量约为3.2 m⋅s-1，发生时间约为17:00。此时，西风带与海风(东风)相互消散，形成空中风速为零的安静风带。冬季海风上界零值区出现在18:00左右，环流高度约为1.3 km。陆风发展高度明显低于海风，春季高空零值区出现在6点左右，最高值只能达到1 km左右，而冬季陆风在400 m左右形成静风，夜间受多天气过程影响，盛行高度小于500 m。</p>
+<p>WRF PBL方案对不同地形、不同下垫面和不同大气背景的适用性差异很大。海陆风作为一种次级环流，是由海陆热力差异引起的，受海陆温差、地理特征、下垫面和背景风的影响较大。因此，SLB的仿真结果对WRF PBL方案的选择非常敏感。为了找出适合上海地区SLB模拟的PBL格式，采用了11种WRF PBL格式进行了模拟。</p>
+<p>结果表明，对于本研究研究的SLB连续发生(3天)，不同PBL方案对应的模拟结果与观测数据的吻合程度不同，如表2所示。表2显示，只有S1 (YSU)、S4 (MYNN2.5)和S10 (SH)方案的模拟在近地面天气、垂直剖面和边界层高度方面与观测资料一致。三种方案计算的温度和相对湿度的COR和IOA值均在0.88以上。此外，三种方案模拟的风速和风向垂直变化与观测趋势一致，模拟的pblh也与观测资料吻合较好。因此，由于其他方案只能部分匹配近地表观测和探测观测数据，因此被丢弃。</p>
+<p><strong>《Adaptability evaluation of boundary layer schemes for simulation of sea and land breeze circulation in the west coast of the Yellow Sea》</strong></p>
+<p>在中尺度数值模拟中，行星边界层参数化方案的选择与边界层风场的数值模拟和预报精度密切相关。</p>
+<p>In this study, we use the high-resolution Doppler Wind Lidar (DWL) boundary layer three-dimensional wind data, combined with the model simulation<br>results, in order to find PBLS suitable for simulating the wind field under the similar climate background in this observation area.</p>
+<p>本研究利用高分辨率多普勒风激光雷达(DWL)边界层三维风资料，结合模式模拟结果，以期找到适合模拟该观测区相似气候背景下风场的PBLS。</p>
+<p>根据多年来的观测事实，日照沿岸的SLB环流十分明显。等利用DWL对黄海西岸的SLB循环结构进行了首次连续观测和研究，分析了该地区海陆风的发展高度、转变持续时间、风速、风切变等关键要素。在此基础上，首次在该地区开展了各种边界层方案下的SLB环流模拟试验探索。</p>
+<p>wrf的10种不同的PBLS具有不同的风场模拟，这与PBLS湍流参数化过程密切相关。边界层格式是针对小于边界层尺度的湍流而设计的。它是一种基于集合平均的参数化方案。传统的PBLS是针对稳态设计的系综平均方案。边界层方案具有以下特点:1）假定边界层是稳定的，因此早晚发展变化较快的边界层不存在2）假设为水平均匀性，只考虑垂直湍流混合，不考虑水平湍流混合;3）未考虑湿对流过程;4）边界层湍流过程中未考虑自由大气中的湍流混合;5）集合平均边界层湍流特征的空间尺度范围。</p>
+<p>The model adopts three-layer nested structure, as shown in Fig. 1, with a horizontal resolution of 27 km, 9 km, and 3 km, respectively, for the d01, d02, and d03 domain. The network dimension is 112 × 106, 100 × 94 and 100 × 103, respectively. The longitude and latitude of the central point (35.416◦E, 119.527◦N) are divided into 43 layers vertically.<br>模型采用三层嵌套结构，如图1所示，d01、d02、d03区域的水平分辨率分别为27 km、9 km、3 km。网络维度分别为112 × 106、100 × 94和100 × 103。中心点(35.416°E, 119.527°N)的经纬度垂直分为43层。（可以按照这个来参考划分网格，一般都是27,9,3的分辨率）</p>
+<p>考虑到模型启动时间，每次仿真提前6小时。</p>
+<p>不同PBLS模拟的温度、湿度等气象要素存在显著差异，因此需要对模拟之后的这些要素进行对比。</p>
+<p>通过计算模拟结果与观测边界层风速和风向的平均偏差，并考虑垂直高度和时间的变化规律，对黄海三维风场模拟的PBLS进行了评价。（每个边界层的方案可以预测的温湿度等都是不同的，这些对结果有重要的影响，可以进行深入分析。）</p>
+<p>根据天气形势场分析，9月11日，受副热带高压影响，天气系统相对稳定。日照地区上空有一个低涡中心位于贝加尔湖南部。其南部高槽自西向东影响中国东部，副高的稳定为SLB环流的形成提供了必要条件。11日08时，该区域处于高槽前方，受西北气流影响。20时，高槽过境受西南气流影响。9月27日至28日，日照北部有一个低涡中心从贝加尔湖向内蒙古东部移动。在南部，西太平洋有第24号台风“潭美”。西太平洋副热带高压断开。此时日照地区处于鞍区环流态势，无明显天气系统影响，为SBL形成创造条件。（不受强对流天气的影响是必须要说明的，可以不放图，但是必须要说明）</p>
+<p>用10种不同的模式对边界层进行仿真模拟，模拟了30天不同高度的大气情况。本文用偏差来表示每一个模拟的准确情况。要知道某个高度上出现风切变，风向发生变化，然后产生</p>
+<p>在500 m高度以下，大多数边界层方案的风速偏置突变发生在14-15 CST，而风向偏置突变发生在12-13 CST，比风速变化时间提前2 h。（意思是14-15点风速发生突变，12-13点风向发生突变）</p>
+<p>在CST 04-06日出之前，地面温度比海洋温度下降得更快，形成一个相对寒冷的源。靠近地面的气流汇聚上升，形成从陆地到海洋的陆风。日出后，随着地面温度的快速上升，陆地的升温速度快于海面。陆地形成相对热源，海洋形成相对冷源。08 CST前后，海陆温差逐渐增大。</p>
+<p>08 ~ 12 CST，边界层低层明显有从黄海西海岸向西吹向陆地的海风。从西南向东吹向海洋的风出现在1公里以上。12 CST左右，1000 ~ 1500 m附近形成海风环流，15 ~ 18 CST海风相对较强。</p>
+<p>从夜间20cst开始，随着海陆温差的减小，海风方向逐渐由近地面的偏东风转变为东南风。有海风转变为陆风的趋势，在21-22 CST方向转向西南，形成陆风。</p>
+<p>在沿海地区，由于白天陆地温度的升高，该地区的分层不稳定，并继续向内陆延伸。随着陆面热量的增加和海风的逐渐增强，不稳定区气体层厚度不断增加，并向内陆最近的地方延伸。然后热量增加减弱，不稳定区高度降低，海风逐渐崩塌。这一系列过程表明，当气流经过不同下垫面时，由于下垫面的动力和热特性的不连续变化，风和温度在逐渐适应新下垫面的过程中，会在新下垫面影响的范围内形成TIBL。</p>
+<p>SLB在地面附近有两个局地环流。海风在白天从海上吹向陆地，陆风在晚上从陆地吹向海洋。海陆风昼夜交替引起的海陆温差(即白天海面温度低于陆地温度，夜间高于陆地温度)带来近地面大气的密度和压力差，压力梯度力推动气流从高压(低温)区向低压(高温)区流动</p>
+<p>边界层参数化方案问题： 模拟中使用的边界层参数化方案无法准确模拟风速和风向的变化。实际观测中存在海陆风转换的现象，但模拟风场无法很好地反映这一过程，或者模拟风场可能出现虚假的海陆风转换。（这个才是本质问题吧）</p>
+<p>浮力和风切变是边界层的两种驱动力，分别负责热驱动和动力驱动。浮力的作用影响云和辐射等微物理过程的变化。表面的加热和冷却引起边界层的热传递。感热能是热驱动湍流能的来源之一。风切变将导致大部分TKE的变化，并引起动能输运。紊流扩散方程表达了这一变化过程。</p>
+<p>对预测结果的三个方案进行描述：GBM，YSU，MYNN2</p>
+<p>GBM格式是一种紊流动能闭合格式，可以预测TKE。它包括一个1.5阶湍流闭合模型，该模型考虑了夹带层的影响，在夹带层中自由大气被拉入边界层。在夹带层之上是自由大气，没有或只有非常弱的湍流。在该方案中，边界层顶部采用夹带闭合法，有效改善了云顶的长波辐射散射以及地面与大气之间的辐射，从而保证了浮力生成的湍流扩散方程的准确性。海面蒸发会产生许多云，海陆热交换在沿海地区更为频繁。边界层由热量驱动。GBM方案的特点决定了它在有限的垂直分辨率条件下能够合理地描述有云覆盖的边界层模拟。它适用于模拟海陆风中由于辐射加热和冷却引起的频繁变化沿海地区乌云密布。</p>
+<p>YSU格式是非局部k理论格式。该方案改善了MRF方案分层太稳定的缺点。为了解决梯度扩散不适用于对流边界层上半部分的问题，对局部梯度进行校正。在公式中引入项，使非局部地热对流将地表的热空气带到边界层的中上层。局部梯度校正项用于描述对流大尺度湍流涡引起的非局部传输。然而，沿海地区边界层的模拟应重点关注海陆热的频繁交替和SLB的特征。SLB的模拟需要很好地描述湍流流感热通量的变化。YSU方案通过局地梯度校正，增加了海陆风模拟中由热强迫引起的湍流混合，增加了热对流混合层的高度，降低了风切变引导下的动力混合层的高度。当边界层稳定由不稳定变为稳定时，扩散方程中不考虑梯度逆项。</p>
+<p>MYNN2方案是在原来的M-Y 2.5级方案的基础上改进的。该方案改进了原方案中对浮力的忽略，改进了混合层高度过高、湍流能级过大的缺点，定义了长度尺度的表达式，提出了凝结物理过程，减小了混合层厚度和湍流能级，并在计算中限制了长度尺度与TKE的比值，提高了计算稳定性。(Nakanishi and Niino, 2004,2006)。MYNN2方案参数化了气压相关项，考虑了浮力对气压相关项的影响，引入了一组代表浮力和切变的闭合参数。</p>
+<p>两种方案都考虑了边界层顶部的夹带过程。GBM增强了地面对大气的长波辐射散射。YSU方案增加了边界层中高层热对流的混合高度层通过逆梯度项。两种方案都能很好地描述由海水和海水之间的温差引起的热趋势。MYNN2不考虑夹带过程，而改变海洋对陆地的温度和湿度不明显，但海面对陆地的温度和湿度不明显，MYNN2方案在1400cst时的风速大于另外两种方案，这与气压和封闭性有关，表示浮力和剪切的参数。这个方案可以更好地描述动态和垂直混合。在美国也有类似的趋势。</p>
+<p>研究的主要目的是探索WRF模式中用于黄海海陆风三维模拟的最优自适应边界层参数化方案。选取了10种不同的边界层参数化方案，并与日照市高分辨率风力观测资料进行了比较。结果表明，1）DWL和WRF模拟的TKE比较表明，GBM、MYNN2和YSU方案对SLB的发生时间、持续时间和发展高度的模拟更为精确。它们更适合于当时气候背景下盛行SLB条件下三维风场模拟的边界层参数化方案。GBM和YSU方案均能较好地描述海陆热差引起的边界层热强迫，而MYNN2方案能较好地描述气压引起的TKE输送和强烈的垂直混合和剪切。2）模拟与观测之间的偏差与高度有关。在800-1000 m高度偏差较小，而在500-1000 m一定高度以下，MYNN2方案产生较高的模拟温度和较低的模拟湿度，且偏差较小。在其他高度，GBM和YSU方案比MYNN2具有更高的温度和更低的湿度，且模拟偏差较小。3）仿真结果与SLB的过渡时间有关。日照地区SLB过程具有显著的日变化特征。但模拟的海陆风转变过程不明显，在11、14、19-22和02-05 CST的模拟偏差较大，而在08、12、18-19和23 CST的风速和风向偏差较小。</p>
+<p><strong>《A new perspective on surface wind speed variation with respect to the contribution of sea-land breezes》</strong></p>
+<p>Generally, the key influential factors of the SLB include two main categories. One category is the coastline distribution and regional<br>landscape, which can affect both the direction and speed, or even the formation of the SLB.<br>一般来说，影响SLB的关键因素主要包括两大类。一类是海岸线分布和区域景观，它们既可以影响SLB的方向和速度，也可以影响SLB的形成。</p>
+<p>Specifically, the coastline distribution defines the comparative direction of synoptic wind, namely offshore or onshore wind, which both belong to shore-perpendicular winds. Numerical studies showed that high speed of shore-perpendicular winds block SLB formation, including diminishing speed, making SBW stall at the coast or thoroughly prohibiting SLB, though specific thresholds varied among different numerical experiments<br>具体来说，海岸线分布定义了天气风的相对方向，即离岸风或陆上风，两者都属于海岸垂直风。数值研究表明，高速度的滨向垂直风阻碍了SLB的形成，包括降低速度，使SBW在海岸失速或彻底阻止SLB的形成，尽管具体阈值在不同的数值实验中有所不同</p>
+<p>Landscape is closely related to topography, which might enhance sea breezes by combining sea breezes with slope winds through elevated heating.<br>景观与地形密切相关，地形可以通过高架加热将海风与坡风结合起来，从而增强海风。</p>
+<p>The  location of urban areas also belongs to the aspect of landscape.  Characteristics  of SLB may be weakened or strengthened by interaction with  another thermodynamic circulation, that is, urban heat island circulation  whereas specific effect on its sign and magnitude varies a lot as  condition changes.<br>城市区域的区位也属于景观方面。城市热岛环流与城市热岛环流的相互作用可能会减弱或加强城市热岛环流的特征，但其具体影响程度随条件的变化而变化</p>
+<p>另一类是能够影响原位辐射和温度的因素(热力学因素)，如云、不同类型的气溶胶、城市地区的放热、城市化的热效应和海面温度变化的大尺度信号。这些影响因子通过对原位辐射或海陆温差(TDLS)的影响来影响SLB速度，后者与陆地表面感热通量的变化有关，是SLB发生的直接原因。无论这些影响因素属于哪一类，它们都与常规观测到的风有很大的不同。</p>
+<p><strong>《A Numerical Study of a Sea Breeze at Fuerteventura Island, Canary Islands, Spain》</strong></p>
+<p>我们的目的是研究海风环流如何在与主流气流相反的方向上发展，以及它在亚热带北大西洋东部边缘的白天如何演变。为了实现这一目标，我们分析了2007年4月10日加那利群岛富埃特文图拉岛沿岸由海风引发的一次浅层对流。这是不寻常的一天，海面上的风是西北风，而不是传统的信风(东北风)。</p>
+<p>积云参数化方案是一种气象模型中的子模型，用于模拟和描述大气中的积云（cumulus clouds）和对流现象。积云是一种低云，通常形成在对流活动增强的条件下，例如当气体被加热并上升时。积云参数化方案旨在模拟这些积云的形成、发展和演变，以更准确地预测天气现象。总的来说，积云参数化方案是一种用于模拟对流现象的近似方法，通常在较粗糙的模型网格中使用。在高分辨率模型中，对流现象可以直接模拟，因此不再需要使用这些参数化方案。这有助于提高模型的准确性，特别是在模拟小尺度天气现象时。</p>
+<p>无论是陆地地形还是海洋，PBL都直接受到周围地表的影响。Stull（1991）指出，非局部方法可以更好地解释林冠上方PBL的特征，而局部观点可能不合适。在美国大平原上空的两个对流边界层案例中也得出了类似的结论（Gibbs等人，2011），其中非局部方案的结果更接近观测结果，尽管局部方案和非局部方案之间的差异相对较小。</p>
+<p>鉴于上述研究是在中纬度或热带地区进行的，人们应该考虑这些发现是否适用于加那利群岛等亚热带地区。因此，我们选择了五种常见的PBL参数化方案进行测试：两种一阶非局部闭包方案和三种1.5阶局部闭包方案，总结见表1。</p>
+<p>此外，除了仅与Pleim–Xiu陆地表面方案兼容的非对称对流模型版本2方案（ACM2）外，所有PBL方案都应用了相同的陆地表面模型（Noah/UCM）。最后，所选择的PBL方案中的几个方案与特定的表面层方案相关联，因此，不可能对所有模拟都有一个公共表面层方案。因此，Mellor–Yamada–Nakanishi–Niino 2.5 PBL模型（MYNN）应用了自己的方案，而修订后的宾夕法尼亚州立大学/NCAR中尺度模型版本5（MM5）（Jiménez等人，2012）适用于其他模型。表2中总结了这些信息。</p>
+<p>将10米风速、风向和2米温度的观测结果与模型模拟结果进行了比较。这些观测结果由三个常规气象站提供.</p>
+<p><strong>尽管没有PBL方案在10m风模拟中脱颖而出，但非局部方案（特别是YSU）似乎获得了可靠的风模拟，这与之前的研究一致（Cohen等人，2015；Banks等人，2016）。</strong></p>
+<p>we have chosen five common PBL parametrization schemes for testing: two first-order non-local closure schemes and three 1.5-order local closure schemes.<br>我们选择了五种常见的PBL参数化方案进行测试:两个一阶非局部闭包方案和三个1.5阶局部闭包方案。</p>
+<p>考虑到参数化方案可能对模拟产生的高影响，我们使用了相同的辐射(长波和短波)、积云和微物理方案，以及相同的初始条件和边界条件。</p>
+<p>为了描述观测数据与模拟数据之间的差异，我们使用了四个统计指标，包括平均偏倚误差(MBE)、均方根误差(RMSE)、相关系数(ρ)和一致性指数(IA)。</p>
+<p><strong>这个是一个非常好的分析误差的方法，觉得比前两篇文章写的都要好。</strong></p>
+<p>我们认为，由于内陆站的特殊地形条件，PBL方案不能代表观测值的变异性，也不能准确预测风场。虽然没有PBL方案在10米风模拟中脱颖而出，但非局部方案(特别是YSU)似乎获得了可靠的风模拟，这与先前的研究一致。</p>
+<p>考虑到10 m风和2 m温度的结果，MYNN和YSU PBL方案都适合模拟该海风事件，MYNN方案在风模拟方面稍好，YSU方案在温度模拟方面明显好于MYNN方案。以前的工作已经得出结论，对于使用特定方案没有明确的建议。尽管YSU方案通常比MYNN方案表现更好(Smith et al. 2018)。考虑到之前的结论以及Arrillaga et al.(2016)和Huang et al.(2016)，我们选择YSU PBL方案来模拟这次海风事件，因为它是一种非局部方案，在模拟热力学参数方面具有非常高的性能，并且在大多数可用气象站的模拟和观测流量之间具有良好的一致性。</p>
+<p>不稳定边界层和稳定边界层之间的区别在于温度和湍流特性。不稳定边界层表现出明显的温度差异和强烈的湍流活动，而稳定边界层则表现出较小的温度差异和较弱的湍流活动。这两种边界层类型对天气和气候产生不同的影响。</p>
+<p>我们的试验表明，非局部闭合方案是最佳选择，YSU PBL方案与修正MM5相似表面层方案相结合是最优方案。</p>
+<p><strong>非局部闭合方案会比局部闭合方案的效果要好</strong>(原因要讲清楚)</p>
+<p>最后，我们必须记住，Jousse等人（2016）以及Gunwani和Mohan（2017）曾认为，WRF模型中现有的PBL参数化无法产生完全准确的结果。这种行为在以浅积云为特征的地区尤为显著（Huang等人，2013），这是富特文图拉岛和加那利群岛大部分地区的典型天气特征（Carrillo等人，2016）。考虑到我们的结果和Jousse等人（2016）、Gunwani和Mohan（2017）的发现，以及我们测试的时间覆盖范围有限，我们认为我们的结果对这一特定事件有效，但需要在其他情况下进行验证。</p>
+<p>PS：人家还是非常诚实的写，模拟不能产生准确的结果，并给出了相应的原因。</p>
+<p>日出后大约3小时，陆地的温度明显更高，开始变得比周围的海洋更热。这种差异加热改变了主环流，因为气流开始改变方向（转向），穿过靠近机场站的岛屿东北部（图6a中的GCFV机场），但也逆时针返回波佐-内格罗站以南。这种行为与Soderholm等人描述的在加热山脊上进行对流演化的低层流相匹配。（2014），其中向风流与峰顶下风的反向背风侧流汇合。Pozo Negro周围的局部水流也发生了另一个变化，西南部的局部水流穿过山谷向内陆移动。风速图显示，除西南部外，该岛大部分地区的风速都有所下降（图6b），在西南部，流经周围山区之间地峡的水流仍然很强（&gt;5 m s−1）（Jandía Península的地形见图2）。随着从海上到陆地的气流，由于两个表面之间的空气动力学粗糙度和温度的变化，对流边界层开始发展（Garratt 1990）。这在岛的背风侧可以清楚地看到，那里的PBL高度可以达到大约800–1000米。（分析的很好）</p>
+<p>我们将背风侧PBL高度的较强发展归因于海风发展的差异。该岛向风一侧的特点是陆上气流，将冷空气从海上吹向沿海地区。因此，温差小于背风侧，导致穿透山脉附近内陆的海风较弱。然而，在气流开始改变方向后，背风侧开始形成海风细胞。内陆地区的供暖更强（尤其是波佐内格罗西南部的山谷附近），没有冷空气平流，这可能会限制气温的上升。因此，PBL的发展没有限制，达到了更高的水平。（+1）</p>
+<p>在GCFV机场站达到最大风速的同时（图4a），两股相反的气流沿着岛屿轴线碰撞，形成了一个汇聚，产生了向上的运动，从而产生了浅层对流，这是这一事件的特征。岛上2米的温度明显更高（图7a）</p>
+<p><strong>就是这两股风汇聚形成向上的对流，然后分析温度的变化，就很神奇</strong></p>
+<p>海风环流对离岸气流的开始与风向的变化同步，如图4和图6a、b所示。</p>
+<p>《Seasonal and diurnal variability of planetary boundary layer height in Beijing: Intercomparison between MPL and WRF results》</p>
+<p>本研究考虑的PBL方案包括3个一阶方案和5个高阶方案。这些方案使用不同的参数来定义PBLH (Stull, 1988)，如体理查德森数(Rib)、梯度理查德森数(Rig)、湍流动能(TKE)和虚势温度(θv)。</p>
+<p>大气边界层的四个阶段：PBLH通常具有显著的日变化特征，与太阳辐射的日变化相关。边界层的日变化大致分为四个阶段:(1)近地面浅对流边界层(CBL)形成阶段;(2)封盖反转层突破，CBL快速生长;(3)发育缓慢且混合良好的CBL;(4)由于热对流的衰减，地面上形成了一个浅稳定层</p>
+<p>《Bay Breeze and Sea Breeze Circulation Impacts on the Planetary Boundary Layer and Air Quality From an Observed and Modeled DISCOVER‐AQ Texas Case Study》</p>
+<p>海风/海湾风环流是由陆地和水的比热差异引起的，其强度取决于水体的大小、深度和地理环境。日出后，由于地表加热增加，陆地上空的空气会比水面上空的空气变暖得快。这种热空气最终会上升，使较冷的陆地表面空气向内陆移动，而较温暖的海上回流可以在上面经历。这种离岸流动今后将被称为回流回流(Tijm et al.， 1999)。日落之后，陆地上空的空气比水面上空的空气冷却得更快。最终，一个反向的陆海空温梯度将产生近地面回流。这种凉爽的陆风会移动到海上，取代温暖的空气。白天的回流气流和夜间的近地表陆风都具有内在的物理和化学特征，一旦经过水面，就会暴露在海洋环境中。</p>
+<p>这些复杂的陆海风环流的数值模式模拟，包括其强度和内陆传播已经在世界各地进行了研究。研究发现，它们在很大程度上受盛行天气流、陆地/海洋表面温度、地面风以及土地利用和土地覆盖的影响。</p>
+<p>WRF - Chem运行了72小时的模拟周期，并于2013年9月23日06:utc进行了初始化。</p>
+<p>YSU是一个非局部闭合模型，这意味着它不仅考虑相邻单元的通量，而且考虑垂直网格中其他单元的通量。因此，在对流条件下，非局部方案更能代表垂直混合(Hong et al.， 2006)。YSU方案将PBL顶部定义为感热通量达到最小的高度，并在接近零值的临界体积Richardson数中确定(Hong et al.， 2006)。</p>
+<p>使用臭氧和相关化学示踪剂模型(MOZART)来代表气相化学和气溶胶的全球臭氧化学气溶胶辐射和传输(GOCART)模态方法，WRF‐Chem的化学包在所有领域都被打开。化学物种的初始化学边界条件来自MOZART第4版全球模型每6小时的输出(Emmons et al.， 2010)。在WRF - Chem模型中，使用自然气体和气溶胶排放模型(MEGAN)来表示净生物源排放、气体和气溶胶。</p>
+<p>统计分析用于评估WRF - Chem模拟的每小时气温、风、海表温度(SST)、O3、NO和NOx之间的关系，并由CAMS近地表(距地面15米的站点[AGL])和2013年9月25日的空中测量观测到。统计参数包括确定模拟与观测之间线性关联强度的相关系数(r2)、计算模拟与观测之间差异的均方根误差(RMSE)、平均绝对误差(MAE)、平均观测值(MO)、平均模型(MM)和平均偏倚(bias)，以描述预测结果与观测结果之间差异的大小。</p>
+<p><strong>案例分析的顺序如下:(1)气象观测讨论;(2)空气质量数据分析;(3)应用WRF - Chem模型提高对复杂沿海地区PBL时空变化及其对城市空气质量影响的认识。</strong></p>
+<p><strong>这篇文章可以写到本子里面，这也是我做这件事的意义所在吧。</strong></p>
+<p>因为更稳定的海洋PBL应该使气溶胶保持在较低的高度。</p>
+<p>在这些情况下，必须仔细分析在史密斯角等沿海地点进行的地面测量，因为在任何时候进行的测量都可能表明海洋边界层或近海污染运输。此外，数值模型模拟必须能够区分微风和离岸回流的空间和垂直分布。在这些情况下，使用诸如遥感激光雷达或云高计等剖面仪器对边界层进行连续监测至关重要。</p>
+<p><strong>数值模式模拟的用途有两个方面:(1)解释涉及回流和海湾风之间垂直分布的机载观测(图4和5);(2)随后分析WRF - Chem在复杂局地环流影响下的恶劣空气质量状况事件</strong></p>
+<p>结果表明，模拟的YSU PBL在陆地上的高度低于观测值(表4)，并且通常伴随着对白天近地表温度的低估(表5和表S21)。这表明低边界层高度可能是由于对地表热通量的低估造成的。结果还表明，陆地和水面上的白天模拟PBL高度存在明显差异，对墨西哥湾上空的模拟PBL高度估计过高，有时没有相关性(平均偏差为- 1.7 m，相关系数为0.09)。与陆地测量结果的高相关性和高平均偏差相比(相关系数为0.82，平均偏差为- 384.7 m)。与浮标数据相比，墨西哥湾模拟PBL高度的略微高估和低相关性与模式对海温的高估一致。</p>
+<p>模拟和观测之间臭氧混合比的差异显示出强烈的日间/夜间趋势。虽然臭氧在夜间很大程度上被高估了，但实际情况要少得多。</p>
+<p>观测和模式模拟的独特结合阐明了环流状态及其对沿海地区空气质量的影响之间复杂的相互作用。</p>
+<p>使用WRF - Chem的模式模拟显示，在模拟PBL高度、近地表温度和地表臭氧混合比方面，与观测结果总体上相当一致(表3)。然而，海风/海湾风的开始模拟时间比观测时间晚2小时。</p>
+<p>然而，这些研究只使用了特定的PBL方案，并且没有解决不同PBL方案引起的模拟结果之间的差异。与上海SLB数值模拟相对应的最优WRF-PBL方案尚未探索。为了了解SLB期间的污染物扩散模式，需要准确模拟大气流场。一个合适的WRF-PBL方案不仅可以准确地模拟风场，而且可以提供SLB发生期间污染物扩散的重要信息。</p>
+<p>SLB是沿海地区由于海陆热量不均而形成的日周期、日风向相反的局地天气系统。SLB环流主要由海陆温差驱动，其强度与太阳辐射强度呈正相关（Azorin-Molina和Chen，2009）。当海风在海面附近形成时，通常伴随着风向的突然转变、风速的增加、温度的降低和相对湿度的增加（Dudouit-Fichet et al.，2010；Khan，2010）。</p>
+<p>由于SLB的主要驱动力来源于海陆热力差，并且受近地面风场的影响很大，因此模拟的温度场和风场对PBL方案非常敏感。近地面气象变量代表低边界层的天气变化过程，这对PBL方案的评估很重要。因此，首先将近地表观测结果与预测结果进行了比较。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B5%B7%E9%99%86%E7%8E%AF%E6%B5%81/" class="print-no-link">#海陆环流</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SLBC海陆环流文献阅读</div>
+      <div>https://zhy-fang.github.io/2023/10/31/SLBC/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>FangZhy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/13/article4/" title="文献阅读4">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">文献阅读4</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/18/WRF%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" title="WRF系统安装">
+                        <span class="hidden-mobile">WRF系统安装</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"Eoh77H6EQAS37uxyRy06alzu-gzGzoHsz","appKey":"XOCdmA92n9HbEHVPx9oCL011","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

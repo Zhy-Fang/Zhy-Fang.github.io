@@ -16,22 +16,25 @@
   <meta name="author" content="FangZhy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="“Hello World” 这是我的第一篇文章。 心血来潮突然想开通一个属于自己的博客。于是花费了一下午加一个晚上的时间。 这是一个只属于自己的私人空间，估计也没有多少人看。当然这样是最好的。好多事情不想让太多的人知道。 这里以后会更新自己的科研进展、正面和负面的情绪，以及自己对生活、电影和文章的感想，记录下生活的点滴和美好。">
+    <meta name="description" content="WRF小白到最后的数据处理。 wrfout 里面有很多变量，是需要诊断的，不是直接输出。需要用函数提取出来。 看季节平均，月平均，可以用ncl进行处理。 wrf输出是根据地形所变化的。第一层是在eta层输出的，不是等位势面和等高面的。eta是用0和1表示的。 如果看500mpa的温度场，需要经过差值通过换算，然后才能绘图。 WRF是一个格点，模拟值是每一个格点的平均值。观测的时候实在一个点上，而不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="欢迎来到我的碎碎念">
-<meta property="og:url" content="https://zhy-fang.github.io/2023/09/04/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/index.html">
+<meta property="og:title" content="wrfout">
+<meta property="og:url" content="https://zhy-fang.github.io/2023/09/28/wrfout/index.html">
 <meta property="og:site_name" content="欢迎来到我的空间">
-<meta property="og:description" content="“Hello World” 这是我的第一篇文章。 心血来潮突然想开通一个属于自己的博客。于是花费了一下午加一个晚上的时间。 这是一个只属于自己的私人空间，估计也没有多少人看。当然这样是最好的。好多事情不想让太多的人知道。 这里以后会更新自己的科研进展、正面和负面的情绪，以及自己对生活、电影和文章的感想，记录下生活的点滴和美好。">
+<meta property="og:description" content="WRF小白到最后的数据处理。 wrfout 里面有很多变量，是需要诊断的，不是直接输出。需要用函数提取出来。 看季节平均，月平均，可以用ncl进行处理。 wrf输出是根据地形所变化的。第一层是在eta层输出的，不是等位势面和等高面的。eta是用0和1表示的。 如果看500mpa的温度场，需要经过差值通过换算，然后才能绘图。 WRF是一个格点，模拟值是每一个格点的平均值。观测的时候实在一个点上，而不">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-04T04:14:27.000Z">
-<meta property="article:modified_time" content="2024-01-07T01:45:50.580Z">
+<meta property="og:image" content="https://zhy-fang.github.io/2023/09/28/wrfout/image-1.png">
+<meta property="og:image" content="https://zhy-fang.github.io/2023/09/28/wrfout/image-2.png">
+<meta property="article:published_time" content="2023-09-28T07:30:48.000Z">
+<meta property="article:modified_time" content="2024-01-07T01:51:08.687Z">
 <meta property="article:author" content="FangZhy">
-<meta property="article:tag" content="生活闲话">
+<meta property="article:tag" content="WRF">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhy-fang.github.io/2023/09/28/wrfout/image-1.png">
   
   
   
-  <title>欢迎来到我的碎碎念 - 欢迎来到我的空间</title>
+  <title>wrfout - 欢迎来到我的空间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="欢迎来到我的碎碎念"></span>
+            <span id="subtitle" data-typed-text="wrfout"></span>
           
         </div>
 
@@ -208,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-04 12:14" pubdate>
-          2023年9月4日 中午
+        <time datetime="2023-09-28 15:30" pubdate>
+          2023年9月28日 下午
         </time>
       </span>
     
@@ -220,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          159 字
+          719 字
         
       </span>
     
@@ -231,7 +234,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -268,16 +271,43 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">欢迎来到我的碎碎念</h1>
+            <h1 id="seo-header">wrfout</h1>
             
             
               <div class="markdown-body">
                 
-                <p>“Hello World”</p>
-<p>这是我的第一篇文章。</p>
-<p>心血来潮突然想开通一个属于自己的博客。于是花费了一下午加一个晚上的时间。</p>
-<p>这是一个只属于自己的私人空间，估计也没有多少人看。当然这样是最好的。好多事情不想让太多的人知道。</p>
-<p>这里以后会更新自己的科研进展、正面和负面的情绪，以及自己对生活、电影和文章的感想，记录下生活的点滴和美好。</p>
+                <p>WRF小白到最后的数据处理。</p>
+<p>wrfout 里面有很多变量，是需要诊断的，不是直接输出。需要用函数提取出来。</p>
+<p>看季节平均，月平均，可以用ncl进行处理。</p>
+<p>wrf输出是根据地形所变化的。第一层是在eta层输出的，不是等位势面和等高面的。eta是用0和1表示的。</p>
+<p>如果看500mpa的温度场，需要经过差值通过换算，然后才能绘图。</p>
+<p>WRF是一个格点，模拟值是每一个格点的平均值。观测的时候实在一个点上，而不是在面上，观测与模拟经纬度最近的一点，涉及到坐标索引的转换。</p>
+<h2 id="1-计算"><a href="#1-计算" class="headerlink" title="1. 计算"></a>1. 计算</h2><p>· 读取，合并，基本计算<br>· 垂直差值，坐标索引转换。<br>· 诊断量计算。</p>
+<h2 id="2-绘图"><a href="#2-绘图" class="headerlink" title="2. 绘图"></a>2. 绘图</h2><p>剖面图 </p>
+<p>WRF ARW POST grads</p>
+<p>NCL-pyngl:不更新，但是基本可以满足要求。</p>
+<p>MATLAB：大，不开源，不太方便迁移</p>
+<p>Python： wrf-python </p>
+<p>numpy pandas xarry cartopy basemap(停止更新)</p>
+<p>Meteoinfo</p>
+<p>R,GIS 比较专业地理绘图，投影丰富</p>
+<p><img src="/2023/09/28/wrfout/image-1.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>NCL和python</p>
+<p>T2：(LON,LAT) Interpline 经向和纬向的分布</p>
+<p>TK（LON，LAT，P） vertcross 经向剖面 纬向剖面</p>
+<p>dim_avg_n()用于计算均值</p>
+<p><img src="/2023/09/28/wrfout/image-2.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+<p>想清楚自己需要哪张图</p>
+<p>后处理要处理什么变量，要怎么表示。</p>
+<p>技术永远是简单的，要懂原理和框架，才是非常难的。</p>
+<p>点：观测与站点的对比图<br>面：二维和三维的面<br>    2D 地面过程：2m气温填色图变化， 风速， 海平面气压，湿度，边界层<br>    BOX：看垂直结构（边界） 比湿 位温 位势高度<br>    4D： 时间变化</p>
+<pre><code class="hljs">由点到面去分析，由空间到时间分析
+多尺度的作用和分析
+
+确定这些之后，找证据支撑，数据→可视化→分析
+</code></pre>
+<p>原理搞清楚了，技术多摸索基本就搞清楚了。</p>
+<p>关注背后的原理，为什么要后处理，要处理什么。（第一性原理）</p>
 
                 
               </div>
@@ -290,7 +320,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%94%9F%E6%B4%BB%E9%97%B2%E8%AF%9D/" class="print-no-link">#生活闲话</a>
+        <a href="/tags/WRF/" class="print-no-link">#WRF</a>
       
     </div>
   
@@ -302,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>欢迎来到我的碎碎念</div>
-      <div>https://zhy-fang.github.io/2023/09/04/欢迎来到我的碎碎念/</div>
+      <div>wrfout</div>
+      <div>https://zhy-fang.github.io/2023/09/28/wrfout/</div>
     </div>
     <div class="license-meta">
       
@@ -315,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月4日</div>
+          <div>2023年9月28日</div>
         </div>
       
       
@@ -347,15 +377,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/04/WRF/" title="WRF模式飓风案例-入门">
+                      <a href="/2023/10/11/WRFexample/" title="WRFexample">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">WRF模式飓风案例-入门</span>
+                        <span class="hidden-mobile">WRFexample</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/09/27/article3/" title="文献阅读3">
+                        <span class="hidden-mobile">文献阅读3</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
